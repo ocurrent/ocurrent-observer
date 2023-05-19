@@ -1,0 +1,4 @@
+[submodule "ocurrent"]
+	path = ocurrent
+	url = https://github.com/mtelvers/ocurrent
+	branch = curl

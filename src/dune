@@ -1,0 +1,8 @@
+(executables
+ (public_names ocurrent-observer)
+ (names main)
+ (libraries
+   current_web
+   current_curl
+   current_slack
+   prometheus-app.unix))
