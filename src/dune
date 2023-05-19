@@ -2,6 +2,7 @@
  (public_names ocurrent-observer)
  (names main)
  (libraries
+   current_github
    current_web
    current_curl
    current_slack

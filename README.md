@@ -11,6 +11,20 @@ opam switch create . 4.14.1 --deps-only -y
 dune build
 ```
 
+# Authentication
+
+Sign in to your GitHub Organzation, then go to Developer settings > OAuth Apps > New OAuth App
+
+* Application name: ocurrent-observer
+* Homepage URL http://observer.ocamllabs.io
+* Authorization callback URL: http://observer.ocamllabs.io/login
+
+Next click Generate a new client secret
+
+```json
+{ "client_id": "", "client_secret": "", "scopes": [ "user:email" ] }
+```
+
 # Running on a Raspberry PI
 
 I am using an older Raspberry PI which needs an arm/v7 binary which can be built like this.
