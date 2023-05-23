@@ -4,6 +4,6 @@
  (libraries
    current_github
    current_web
-   current_curl
+   current_health_check
    current_slack
    prometheus-app.unix))

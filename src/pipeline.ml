@@ -10,12 +10,13 @@ let notify_status ~channel x =
   Current.all [ Current_slack.post channel ~key:"ocurrent-observer-status" s; x ]
 
 let pipeline_per_host host =
+  let hourly = Current_cache.Schedule.v ~valid_for:(Duration.of_hour 1) () in
   let halfhourly = Current_cache.Schedule.v ~valid_for:(Duration.of_min 30) () in
-  let minute = Current_cache.Schedule.v ~valid_for:(Duration.of_min 10) () in
-  let dig = Current_curl.resolve ~schedule:halfhourly ~fqdn:host in
-  Current_curl.expand dig |> Current.list_iter (module Current_curl.Address) @@ fun address ->
-  let fetch = Current_curl.fetch ~schedule:minute ~address in
-  Current.all [ fetch ]
+  let dig = Current_health_check.dig ~schedule:hourly ~fqdn:host in
+  Current_health_check.expand dig |> Current.list_iter (module Current_health_check.Address) @@ fun address ->
+  let curl = Current_health_check.curl ~schedule:halfhourly ~address in
+  let ping = Current_health_check.ping ~schedule:halfhourly ~address in
+  Current.all [ curl; ping ]
 
 let pipeline ~channel ~hosts () =
   notify_status ~channel (Current.all (List.map pipeline_per_host hosts))

@@ -9,7 +9,7 @@ COPY --chown=opam \
 	ocurrent/current_rpc.opam \
 	ocurrent/current_slack.opam \
 	ocurrent/current_web.opam \
-	ocurrent/current_curl.opam \
+	ocurrent/current_health_check.opam \
 	/src/ocurrent/
 WORKDIR /src
 RUN opam pin add -yn current_docker.dev "./ocurrent" && \
@@ -19,7 +19,7 @@ RUN opam pin add -yn current_docker.dev "./ocurrent" && \
     opam pin add -yn current_rpc.dev "./ocurrent" && \
     opam pin add -yn current_slack.dev "./ocurrent" && \
     opam pin add -yn current_web.dev "./ocurrent" && \
-    opam pin add -yn current_curl.dev "./ocurrent"
+    opam pin add -yn current_health_check.dev "./ocurrent"
 COPY --chown=opam observer.opam /src/
 RUN opam pin -yn add .
 RUN opam install -y --deps-only .

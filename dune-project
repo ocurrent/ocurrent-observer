@@ -13,13 +13,21 @@
   ppx_deriving
   logs
   (current (>= 0.5))
-  current_web
   current_git
-  current_github
-  current_docker
+  current_health_check
   current_slack
   ocluster-api
   capnp-rpc-unix
+  (tyxml (>= 4.4.0))
+  (github-unix (>= 4.4.0))
+  (hex (>= 1.4.0))
+  (prometheus-app (>= 1.2))
+  session-cohttp-lwt
+  (routes (>= 2.0.0))
+  (multipart_form-lwt (>= 0.4.0))
+  (ansi (>= 0.5.0))
+  (csv (>= 2.4))
+  (crunch (and :build (>= 3.3.0)))
   fmt
   (lwt (>= 5.6.1))
   (cmdliner (>= 1.1.0))
