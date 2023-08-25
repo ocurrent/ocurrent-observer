@@ -1,5 +1,6 @@
 ARG arch
-FROM --platform=linux/${arch} ocaml/opam:debian-10-ocaml-4.14 AS build
+FROM --platform=linux/${arch} ocaml/opam:debian-12-ocaml-4.14@sha256:45b04e2a4c933c57549382045dfac12cb7e872cace0456f92f4b022066e48111 as build
+
 RUN sudo apt-get update && sudo apt-get install libffi-dev libev-dev m4 pkg-config libsqlite3-dev libgmp-dev libssl-dev capnproto graphviz -y --no-install-recommends
 RUN cd ~/opam-repository && git fetch -q origin master && opam update
 COPY --chown=opam \
@@ -27,7 +28,7 @@ RUN opam install -y --deps-only .
 ADD --chown=opam . .
 RUN opam config exec -- dune build ./_build/install/default/bin/ocurrent-observer
 
-FROM debian:10
+FROM debian:12
 RUN apt-get update && apt-get install libffi-dev libev4 openssh-client gnupg2 dumb-init git graphviz libsqlite3-dev ca-certificates netbase rsync dnsutils curl -y --no-install-recommends
 WORKDIR /var/lib/ocurrent-observer
 ENTRYPOINT ["dumb-init", "/usr/local/bin/ocurrent-observer"]
