@@ -3,6 +3,7 @@ opam-version: "2.0"
 synopsis: "Observe website and certificates"
 maintainer: ["mark.elvers@tunbury.org"]
 authors: ["mark.elvers@tunbury.org"]
+license: "MIT"
 homepage: "https://github.com/ocurrent/ocurrent-observer"
 bug-reports: "https://github.com/ocurrent/ocurrent-observer/issues"
 depends: [

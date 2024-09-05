@@ -5,6 +5,7 @@
 (authors "mark.elvers@tunbury.org")
 (maintainers "mark.elvers@tunbury.org")
 (formatting disabled)
+(license MIT)
 (package
  (name observer)
  (synopsis "Observe website and certificates")
