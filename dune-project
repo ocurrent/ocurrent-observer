@@ -1,7 +1,7 @@
 (lang dune 3.3)
 (name observer)
 (generate_opam_files true)
-(source (github mtelvers/ocurrent-observer))
+(source (github ocurrent/ocurrent-observer))
 (authors "mark.elvers@tunbury.org")
 (maintainers "mark.elvers@tunbury.org")
 (formatting disabled)
@@ -14,8 +14,9 @@
   logs
   (current (>= 0.5))
   current_git
-  current_health_check
+  current_github
   current_slack
+  current_web
   ocluster-api
   capnp-rpc-unix
   (tyxml (>= 4.4.0))
