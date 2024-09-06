@@ -1,2 +1,1 @@
 (dirs :standard \ var config)
-(vendored_dirs ocurrent ocluster)
