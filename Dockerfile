@@ -8,7 +8,7 @@ ADD --chown=opam . .
 RUN opam config exec -- dune build ./_build/install/default/bin/ocurrent-observer
 
 FROM ubuntu:noble
-RUN apt-get update && apt-get install libffi-dev libev4 openssh-client gnupg2 dumb-init git graphviz libsqlite3-dev ca-certificates netbase rsync dnsutils curl -y --no-install-recommends
+RUN apt-get update && apt-get install libffi-dev libev4 openssh-client gnupg2 dumb-init git graphviz libsqlite3-dev ca-certificates netbase rsync iputils-ping dnsutils curl -y --no-install-recommends
 WORKDIR /var/lib/ocurrent-observer
 ENTRYPOINT ["dumb-init", "/usr/local/bin/ocurrent-observer"]
 COPY --from=build /src/_build/install/default/bin/ocurrent-observer /usr/local/bin/
