@@ -1,6 +1,7 @@
 FROM ocaml/opam:ubuntu-24.04-ocaml-4.14 AS build
 RUN sudo apt-get update && sudo apt-get install libffi-dev libev-dev m4 pkg-config libsqlite3-dev libgmp-dev libssl-dev capnproto graphviz -y --no-install-recommends
 RUN sudo ln -f /usr/bin/opam-2.2 /usr/bin/opam && opam init --reinit -ni
+RUN opam option solver=builtin-0install
 COPY --chown=opam observer.opam /src/
 WORKDIR /src
 RUN opam install -y --deps-only .
