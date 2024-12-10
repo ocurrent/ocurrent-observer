@@ -1,13 +1,11 @@
 version: "3.7"
 services:
   observer:
-    image: ocurrent/observer:live
+    image: ocurrent/ocurrent-observer:live
     command: --slack /run/secrets/ocaml-org-deployer-slack --github-oauth /run/secrets/ocurrent-observer-oauth.json www.ocaml.org,opam.ocaml.org,images.ci.ocaml.org,deploy.ci.ocaml.org,opam-repo.ci.ocaml.org,watch.ocaml.org,staging.docs.ci.ocaml.org,docs.ci.ocaml.org,staging.ocaml.org,v2.ocaml.org
     restart: always
-    ports:
-      - "80:8080"
     volumes:
-      - "observer-data:/var/lib/ocurrent-observer"
+      - "observer_data:/var/lib/ocurrent-observer"
     sysctls:
       - "net.ipv4.tcp_keepalive_time=60"
     secrets:
@@ -15,8 +13,10 @@ services:
       - ocurrent-observer-oauth.json
     networks:
       - observer
+
 volumes:
-  observer-data:
+  observer_data:
+
 networks:
   observer:
     name: observer
@@ -25,8 +25,9 @@ networks:
       config:
         - subnet: 2a00:1c10:3:63b::/64
           gateway: 2a00:1c10:3:63b::1
+
 secrets:
   ocaml-org-deployer-slack:
-    file: .secrets/ocaml-org-deployer-slack
+    file: secrets/ocaml-org-deployer-slack
   ocurrent-observer-oauth.json:
-    file: .secrets/ocurrent-observer-oauth.json
+    file: secrets/ocurrent-observer-oauth.json
