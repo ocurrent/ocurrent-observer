@@ -1,5 +1,6 @@
-local:
-	dune build ./_build/install/default/bin/ocurrent-deployer @install
 
-deploy:
-	docker --context ci.ocamllabs.io build -t ci.ocamllabs.io-deployer .
+up:
+	docker compose -f docker-compose.yml -p observer up -d
+
+down:
+	docker compose -f docker-compose.yml -p observer down

@@ -4,3 +4,4 @@ _build
 /var/
 _opam
 *.swp
+/secrets/
